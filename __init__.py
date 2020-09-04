@@ -34,8 +34,6 @@ class IrRemote(MycroftSkill):
         self.action = ""
 
 
-
-
     @intent_handler(IntentBuilder("").require("Device").require("Command").require("Action"))
     def handle_remote_intent(self, message):
         self.device = "LG_AKB72915207"
