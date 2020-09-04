@@ -74,6 +74,9 @@ class IrRemote(MycroftSkill):
                 self.key = "KEY_MUTE"
             self.speak_dialog("action.volume", data={"action": self.action})
 
+        if message.data["Command"] == "power":
+            self.key = "KEY_POWER" 
+            
         self.send_command()
 
 
