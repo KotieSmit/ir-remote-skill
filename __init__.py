@@ -61,7 +61,7 @@ class IrRemote(MycroftSkill):
         self.speak_dialog("count.is.now", data={"count": self.count})
 
 
-    @intent_handler(IntentBuilder("").require("Command").require("Action"))
+    @intent_handler(IntentBuilder("").require("Device").require("Command").require("Action"))
     def handle_remote_intent(self, message):
         self.device = "LG_AKB72915207"
         if message.data["Command"] == "volume": 
