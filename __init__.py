@@ -66,9 +66,9 @@ class IrRemote(MycroftSkill):
         self.device = "LG_AKB72915207"
         if message.data["Command"] in ("volume","audio","sound"): 
             self.action = message.data["Action"] 
-            if self.action == "up":
+            if self.action in ("up", "plus", "app"):
                 self.key = "KEY_VOLUMEUP"
-            elif self.action == "down":
+            elif self.action in ("down", "minus"):
                 self.key = "KEY_VOLUMEDOWN"
             elif self.action == "mute":
                 self.key = "KEY_MUTE"
