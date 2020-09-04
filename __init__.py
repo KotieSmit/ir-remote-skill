@@ -64,6 +64,24 @@ class IrRemote(MycroftSkill):
     @intent_handler(IntentBuilder("").require("Device").require("Command").require("Action"))
     def handle_remote_intent(self, message):
         self.device = "LG_AKB72915207"
+        if message.data["Command"] in ("volume","audio","sound"): 
+            self.action = message.data["Action"] 
+            if self.action == "up":
+                self.key = "KEY_VOLUMEUP"
+            elif self.action == "down":
+                self.key = "KEY_VOLUMEDOWN"
+            elif self.action == "mute":
+                self.key = "KEY_MUTE"
+            self.speak_dialog("action.volume", data={"action": self.action})
+
+        if message.data["Command"] == "power":
+            self.key = "KEY_POWER" 
+
+        self.send_command()
+
+    @intent_handler(IntentBuilder("").require("Command").require("Action"))
+    def handle_remote_intent_2(self, message):
+        self.device = "LG_AKB72915207"
         if message.data["Command"] == "volume": 
             self.action = message.data["Action"] 
             if self.action == "up":
